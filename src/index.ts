@@ -1,16 +1,8 @@
+import axios from 'axios';
 import { User } from './models/User';
 
-const user = new User({ name: 'donkim', age: 33 });
+// axios.post('http://localhost:3000/users', { name: 'dondon', age: 12 });
 
-user.on('change', () => {
-  console.log('aef');
-});
-user.on('change', () => {
-  console.log('ijojiojio');
-});
-user.on('hi', () => {
-  console.log('hihi');
-});
-user.trigger('change');
-user.trigger('hi');
-console.log(user);
+const user = new User({ id: 1 });
+user.set({ name: 'donkim' });
+user.save();
