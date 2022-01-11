@@ -1,21 +1,13 @@
-import axios from 'axios';
+import axios, { AxiosResponse } from 'axios';
 import { User } from './models/User';
+import { Collection } from './models/Collection';
 
-// axios.post('http://localhost:3000/users', { name: 'dondon', age: 12 });
-
-// const user = new User({ name: 'kimkim', age: 99 });
-
-// console.log(user.get('name'));
-
-// user.on('save', () => {
-//   console.log(user);
-// });
-
-// user.save();
-
-const user = User.buildUser({ id: 1 });
-
-user.on('change', () => {
-  console.log(user);
+axios.get('http://localhost:3000/users').then((response: AxiosResponse) => {
+  console.log(response.data);
 });
-user.fetch();
+
+const collection = new Collection('http://localhost:3000/users');
+collection.on('change', () => {
+  console.log(collection);
+});
+collection.fetch();
